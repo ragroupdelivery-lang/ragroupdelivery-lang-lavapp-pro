@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 
 // IMPORTANT: These variables are expected to be set in the environment.
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;;
 
 // The execution environment should provide these variables.
 // If they are missing, the app will show an error instead of crashing.
