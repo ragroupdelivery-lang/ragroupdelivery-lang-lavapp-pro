@@ -1,25 +1,14 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
-// Correção: Use import.meta.env com o prefixo VITE_
+// Lê as variáveis de ambiente com o prefixo VITE_, como esperado pelo Vite.
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-// O resto do ficheiro continua igual...
+// Verifica se as variáveis foram carregadas corretamente.
 if (!supabaseUrl || !supabaseAnonKey) {
-  // ... (código de erro)
+  // Em vez de injetar HTML, lança um erro claro que pode ser visto na consola do navegador.
+  throw new Error("CRITICAL: Supabase credentials are not set in environment variables. Please check your .env file or Netlify environment settings (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY).");
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
-      <div style="font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; background-color: #F7FAFC;">
-        <div style="text-align: center; background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-          <h1 style="color: #2D3748; font-size: 24px; font-weight: 700;">Configuration Error</h1>
-          <p style="color: #718096; margin-top: 16px;">Supabase credentials are not configured.</p>
-          <p style="color: #A0AEC0; margin-top: 8px; font-size: 14px;">Please set SUPABASE_URL and SUPABASE_ANON_KEY environment variables.</p>
-        </div>
-      </div>
-    `;
-  }
-  throw new Error("CRITICAL: Supabase credentials are not set in environment variables (SUPABASE_URL, SUPABASE_ANON_KEY).");
-}
-
+// Cria e exporta o cliente Supabase.
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
